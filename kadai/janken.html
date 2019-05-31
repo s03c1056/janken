@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/sample.css">
+    <title>じゃんけん</title>
+</head>
+
+<body>
+    <header>
+        <h1>じゃんけん</h1>
+    </header>
+
+    <main>
+        <ul>
+            <li id="gu_btn" class="btn">グー</li>
+            <li id="cho_btn" class="btn">チョキ</li>
+            <li id="par_btn" class="btn">パー</li>
+        </ul>
+        <div>コンピュータの出した手は？</div>
+        <div id="judgment">結果は？</div>
+    </main>
+
+    <footer>フッター</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            var mychoice;
+            // var comchoice;
+            var winlosesum;
+            const arr = ["グー", "チョキ", "パー"]
+            var num = Math.floor(Math.random() * 2);
+            alert("相手は" + arr[num])
+
+
+            $("#gu_btn").on("click", function () {
+                mychoice = 0
+            })
+            $("#cho_btn").on("click", function () {
+                mychoice = 1
+            })
+            $("#par_btn").on("click", function () {
+                mychoice = 2
+            })
+
+            $(".btn").on("click", function () {
+                winlosesum = (mychoice - num + 3) % 3;
+                console.log(winlosesum)
+                if (winlosesum == 0) {
+                    alert("引き分け")
+                } else if (winlosesum == 1) {
+                    alert("あなたの負け")
+                } else {
+                    alert("あなたの勝ち")
+                }
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>
